@@ -3,14 +3,16 @@ from shared.node import Node
 import unittest
 
 class YListTests(unittest.TestCase):
+    def setUp(self):
+        self.common_part = Node(5, Node(6, Node(7)))
+
     def test_equal_length(self):
         _4 = Node(4)
         first_start = Node(1, Node(2, Node(3, _4)))
-        common = Node(5, Node(6, Node(7)))
-        _4.next = common
+        _4.next = self.common_part
         _minus4 = Node(-4)
         second_start = Node(-1, Node(-2, Node(-3, _minus4)))
-        _minus4.next = common
+        _minus4.next = self.common_part
 
         vanishing_point = find_vanishing_point(first_start, second_start)
 
@@ -19,11 +21,10 @@ class YListTests(unittest.TestCase):
     def test_first_is_longer(self):
         _4 = Node(4)
         first_start = Node(0, Node(1, Node(2, Node(3, _4))))
-        common = Node(5, Node(6, Node(7)))
-        _4.next = common
+        _4.next = self.common_part
         _minus4 = Node(-4)
         second_start = Node(-1, Node(-2, Node(-3, _minus4)))
-        _minus4.next = common
+        _minus4.next = self.common_part
 
         vanishing_point = find_vanishing_point(first_start, second_start)
 
