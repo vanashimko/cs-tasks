@@ -29,13 +29,13 @@ def find_loop(start):
         return loop_length
 
     def find_start_element_of_loop(loop_length):
-        current_fist = current_second = start
+        current_first = current_second = start
         for _ in range(loop_length):
-            current_fist = current_fist.next
-        while current_fist != current_second:
-            current_fist = current_fist.next
+            current_first = current_first.next
+        while current_first != current_second:
+            current_first = current_first.next
             current_second = current_second.next
-        return current_fist
+        return current_first
 
     element_inside_loop = try_find_element_inside_loop()
     if element_inside_loop:
